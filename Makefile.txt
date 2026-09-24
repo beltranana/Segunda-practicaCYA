@@ -1,0 +1,30 @@
+# Universidad de La Laguna
+# Escuela Superior de Ingeniería y Tecnología
+# Grado en Ingeniería Informática
+# Asignatura: Computabilidad y Algoritmia
+# Curso: 2º
+# Práctica 2: Cadenas y lenguajes
+# Autor: Beltrán Rodrigo Barrios González
+# Correo: alu0101718330@ull.edu.es
+# Fecha: 24/09/2026
+# Archivo Makefile: Automatización de la compilación y limpieza del proyecto.
+
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -Wextra -pedantic -g
+
+TARGET = p02_strings
+
+SRCS = symbol.cc alphabet.cc chain.cc language.cc cya-P02-strings.cc
+OBJS = $(SRCS:.cc=.o)
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
+
+%.o: %.cc
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+.PHONY: clean
+clean:
+	rm -f $(OBJS) $(TARGET)
